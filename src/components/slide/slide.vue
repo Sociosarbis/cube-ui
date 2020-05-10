@@ -147,7 +147,7 @@
         clearTimeout(this._timer)
 
         if (this.slide && this.refreshResetCurrent) {
-          this.currentPageIndex = 0
+          this.currentPageIndex = this.initialIndex
         }
         this._updateSlideDom()
         if (this.showDots) {

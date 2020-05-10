@@ -3,7 +3,7 @@
     <div class="cube-popup-mask" @touchmove.prevent @click="maskClick">
       <slot name="mask"></slot>
     </div>
-    <div class="cube-popup-container" @touchmove.prevent :class="containerClass">
+    <div class="cube-popup-container" @touchmove="handleTouchMove" :class="containerClass">
       <div class="cube-popup-content" v-if="$slots.default">
         <slot></slot>
       </div>
@@ -42,6 +42,10 @@
       position: {
         type: String,
         default: ''
+      },
+      preventDefault: {
+        type: Boolean,
+        default: true
       }
     },
     computed: {
@@ -75,6 +79,9 @@
         if (this.maskClosable) {
           this.hide()
         }
+      },
+      handleTouchMove(e) {
+        if (this.preventDefault) e.preventDefault()
       }
     }
   }
